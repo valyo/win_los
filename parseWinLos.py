@@ -16,18 +16,23 @@ for line in hand:
       if len(line.strip()) == 0:
       	 if len(entries) == 3:
       	 	entries.append("2017-12-12")
+
          if len(entries) > 0:
-         	# print "bla"
             stocks.append(entries)
-            # stocks.append("2017-12-12")
+
          entries = []
          continue
 
       entries.append(line.strip())
 
-# print stocks[1]
+
 for stock in stocks:
-	print stock[3]
+
+	stock[2] = stock[2].replace("[u'", "")
+	stock[2] = stock[2].replace("']", "")
+	stock[1] = stock[1].replace("/aktier/om-aktien.html/", "")
+	print stock
+
 
 
 
