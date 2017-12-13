@@ -20,12 +20,12 @@ def get_tables_data(tables):
     for tr in tables[0].find_all("tr"):
         print tr.find_all("a", class_="link")[0].string.encode('utf-8')
         print tr.find_all("a", class_="link")[0].get('href')
-        print tr.find("td", class_="positive changePercent").contents
+        print tr.find("td", class_="positive changePercent").string.encode('utf-8')
 
     for tr in tables[1].find_all("tr"):
         print tr.find_all("a", class_="link")[0].string.encode('utf-8')
         print tr.find_all("a", class_="link")[0].get('href')
-        print tr.find("td", class_="negative changePercent").contents
+        print tr.find("td", class_="negative changePercent").string.encode('utf-8')
 
 
 # url = "file:///Users/valentingeorgiev/dev/winners_loosers/2016-12-14-vinnare-forlorare.html"
