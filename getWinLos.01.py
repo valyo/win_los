@@ -8,11 +8,17 @@ import re
 import codecs
 from bs4 import BeautifulSoup
 import requests
+import requests.packages.urllib3
 import sqlite3 as lite
 from operator import itemgetter
 from datetime import datetime, timedelta
+
 # from HTMLParser import HTMLParser
 # from IPython.core.debugger import Tracer
+
+# get rid of a warning message
+requests.packages.urllib3.disable_warnings()
+
 reload(sys)
 sys.setdefaultencoding('utf8')
 currentDate = datetime.today().strftime('%Y-%m-%d')
