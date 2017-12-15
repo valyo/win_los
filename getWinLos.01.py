@@ -13,10 +13,7 @@ from datetime import datetime, timedelta
 # from HTMLParser import HTMLParser
 # from IPython.core.debugger import Tracer
 
-# try:
-#     output_file = sys.argv[1]
-# except:
-#     sys.exit("no output file specified!")
+
 currentDate = datetime.today().strftime('%Y-%m-%d')
 
 entries = []
