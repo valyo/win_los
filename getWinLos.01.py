@@ -13,8 +13,8 @@ from operator import itemgetter
 from datetime import datetime, timedelta
 # from HTMLParser import HTMLParser
 # from IPython.core.debugger import Tracer
-
-
+reload(sys)
+sys.setdefaultencoding('utf8')
 currentDate = datetime.today().strftime('%Y-%m-%d')
 
 def connectDB():
