@@ -11,3 +11,5 @@ then
 else
   echo "nothing to do $(date)" >> $HOME/winners_loosers/log.txt
 fi
+
+$PYTHON $HOME/winners_loosers/getWinLos.01.py
