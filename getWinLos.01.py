@@ -3,6 +3,7 @@
 
 
 import sys
+import os
 import re
 import codecs
 from bs4 import BeautifulSoup
@@ -15,6 +16,12 @@ from datetime import datetime, timedelta
 
 
 currentDate = datetime.today().strftime('%Y-%m-%d')
+
+def connectDB():
+
+      db_file = dir_path + "/win_los.sqlite"
+      return  lite.connect(db_file)
+
 
 entries = []
 
@@ -75,8 +82,17 @@ soup = BeautifulSoup(data, "lxml")
 all_tables = soup.find_all("tbody")
 # print "\n ==XSTO stocks=="
 res = get_tables_data(all_tables)
+
+dir_path = os.path.dirname(os.path.realpath(__file__))
+db = connectDB()
+db = connectDB()
+cur = db.cursor()
+
 for r in res:
-	print r
+	query = u"INSERT INTO win_los (sname, slink, pchange, plast, date, type) VALUES (\'%s\', \'%s\', \'%s\', \'%s\', \'%s\', \'%s\');" % (r[0], r[1], r[2], r[3], r[4], r[5])
+	cur.execute(query)
+	db.commit()
+	# print r
 # print all_tables[1].find_all("tr")[0].find_all("a", class_="link")[0].get('href')
 
 # for tr in all_tables[0].find_all("tr"):
