@@ -3,8 +3,13 @@ import os
 import sqlite3 as lite
 import codecs
 
+dir_path = os.path.dirname(os.path.realpath(__file__))
+
+for file in os.listdir(dir_path):
+   if file.endswith("-vinnare-forlorareNew.txt"):
+      print file
+
 hand = codecs.open('2017-12-12-vinnare-forlorareNew.txt', encoding='utf-8')
-numbers = list()
 
 entries = []
 stocks = []
