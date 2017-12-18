@@ -17,8 +17,8 @@ for line in hand:
    if xsto:
       # print line
       if len(line.strip()) == 0:
-      	 if len(entries) == 3:
-      	 	entries.append("2017-12-12")
+         if len(entries) == 3:
+            entries.append("2017-12-12")
 
          if len(entries) > 0:
             stocks.append(entries)
