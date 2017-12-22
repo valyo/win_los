@@ -72,7 +72,7 @@ def get_tables_data(tables):
 url_stchlm = "https://www.avanza.se/aktier/vinnare-forlorare.html?countryCode=SE&marketPlaceCodes=XSTO&timeUnit=TODAY"
 r = requests.get(url_stchlm)
 data = r.text
-soup = BeautifulSoup(data, "lxml")
+soup = BeautifulSoup(data, "html.parser")
 all_tables = soup.find_all("tbody")
 
 res = get_tables_data(all_tables)
