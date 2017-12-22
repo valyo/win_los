@@ -82,7 +82,20 @@ dir_path = os.path.dirname(os.path.realpath(__file__))
 db = connectDB()
 cur = db.cursor()
 
-for r in res:
-	query = u"INSERT INTO win_los (sname, slink, pchange, plast, date, type) VALUES (\'%s\', \'%s\', \'%s\', \'%s\', \'%s\', \'%s\');" % (r[0], r[1], r[2], r[3], r[4], r[5])
-	cur.execute(query)
-	db.commit()
+# print "today is " + currentDate
+
+# check if we already have a record for today
+query1 = "Select count(*) from win_los where date = \'%s\'" % currentDate
+cur.execute(query1)
+present = cur.fetchone()[0]
+
+# if we don't have 80 records, insert the scraped data
+if present < 80 :
+
+    print present
+
+    for r in res:
+
+    	query = u"INSERT OR REPLACE INTO win_los (sname, slink, pchange, plast, date, type) VALUES (\'%s\', \'%s\', \'%s\', \'%s\', \'%s\', \'%s\');" % (r[0], r[1], r[2], r[3], r[4], r[5])
+    	cur.execute(query)
+    	db.commit()
